@@ -15,6 +15,17 @@
       "policy": {
         "installation": "AVAILABLE"
       }
+    },
+    {
+      "name": "acme-knowledge",
+      "source": {
+        "source": "local",
+        "path": "./plugins/devops/acme-knowledge"
+      },
+      "category": "devops",
+      "policy": {
+        "installation": "AVAILABLE"
+      }
     }
   ]
 }

@@ -2,7 +2,7 @@
   "name": "acme",
   "owner": { "name": "DevOps01" },
   "description": "Sample team plugin marketplace for coding agents: one source, native manifests for every tool",
-  "metadata": { "version": "0.1.0" },
+  "metadata": { "version": "0.1.1" },
   "plugins": [
     {
       "name": "acme-platform",
@@ -11,6 +11,14 @@
       "description": "Read-only GitOps status MCP for prod and test (a bundled mock), a rollout checklist skill, and an end-of-session reminder hook.",
       "category": "devops",
       "keywords": ["mcp", "gitops", "read-only", "skill", "hook", "sample"]
+    },
+    {
+      "name": "acme-knowledge",
+      "source": "./plugins/devops/acme-knowledge",
+      "displayName": "Acme Knowledge",
+      "description": "Wires the agent to the team's shared knowledge repo: a setup skill for the acme-kb CLI and a Stop hook that suggests a capture after infrastructure work.",
+      "category": "devops",
+      "keywords": ["knowledge", "memory", "skill", "hook", "sample"]
     }
   ]
 }

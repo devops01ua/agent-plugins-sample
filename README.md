@@ -14,6 +14,7 @@ names are made up and the GitOps server is a mock.
 .claude-plugin/marketplace.json      the catalog, written by hand
 .agents/plugins/marketplace.json     generated catalog for Codex
 plugins/devops/acme-platform/        the sample plugin (MCP + skill + hook)
+plugins/devops/acme-knowledge/       wires the agent to the shared knowledge repo (skill + hook)
 tools/acme_mcp/                      export (the scribes) and install (the messenger)
 scripts/check.sh                     the gatekeeper, also run in CI
 tests/                               tests for the export, the installer, the server and the hook
@@ -31,6 +32,18 @@ the tokens can stay empty), then ask: "check the payments rollout in prod".
 
 The `.git` suffix matters: without it the URL is read as a link to a single
 marketplace file.
+
+## The knowledge half
+
+The tools are one half. The other half is what the agents know: a shared knowledge repo,
+[agent-knowledge-sample](https://github.com/devops01ua/agent-knowledge-sample). The
+`acme-knowledge` plugin wires the agent to it:
+
+```bash
+claude plugin install acme-knowledge@acme
+```
+
+Then ask: "set up the knowledge repo".
 
 ## Other tools
 

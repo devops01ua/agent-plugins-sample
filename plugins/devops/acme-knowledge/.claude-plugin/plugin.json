@@ -1,0 +1,6 @@
+{
+  "name": "acme-knowledge",
+  "version": "0.1.0",
+  "description": "Wires the agent to the team's shared knowledge repo: a setup skill that installs the acme-kb CLI and links the knowledge skills, and a Stop hook that suggests a capture after infrastructure work.",
+  "author": { "name": "DevOps01" }
+}

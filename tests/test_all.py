@@ -150,5 +150,31 @@ class HookTest(unittest.TestCase):
             self.assertEqual((second.returncode, second.stdout), (0, ""))
 
 
+class KnowledgeHookTest(unittest.TestCase):
+    HOOK = REPO / "plugins" / "devops" / "acme-knowledge" / "hooks" / "nudge_capture.py"
+
+    def fire(self, tmp, transcript_text, session="k1"):
+        transcript = Path(tmp) / "t.jsonl"
+        transcript.write_text(transcript_text)
+        event = {"session_id": session, "transcript_path": str(transcript), "stop_hook_active": False}
+        return subprocess.run(
+            [sys.executable, str(self.HOOK)], input=json.dumps(event), capture_output=True,
+            text=True, timeout=10, env={**os.environ, "CLAUDE_PLUGIN_DATA": tmp},
+        )
+
+    def test_nudges_once_after_an_infrastructure_edit(self):
+        edit = json.dumps({"type": "tool_use", "name": "Edit", "input": {"file_path": "/repo/modules/vpc/main.tf"}})
+        read = json.dumps({"type": "tool_use", "name": "Read", "input": {"file_path": "/repo/modules/vpc/main.tf"}})
+        docs = json.dumps({"type": "tool_use", "name": "Edit", "input": {"file_path": "/repo/README.md"}})
+        with tempfile.TemporaryDirectory() as tmp:
+            for quiet, session in ((read, "r"), (docs, "d")):
+                out = self.fire(tmp, quiet, session=session)
+                self.assertEqual((out.returncode, out.stdout), (0, ""))
+            first = self.fire(tmp, edit)
+            self.assertIn("capture this", json.loads(first.stdout)["systemMessage"])
+            second = self.fire(tmp, edit)
+            self.assertEqual((second.returncode, second.stdout), (0, ""))
+
+
 if __name__ == "__main__":
     unittest.main()
