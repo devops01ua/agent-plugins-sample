@@ -1,0 +1,58 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "acme-platform",
+  "version": "0.1.0",
+  "description": "Read-only GitOps status MCP for prod and test (a bundled mock), a rollout checklist skill, and an end-of-session reminder hook.",
+  "author": {
+    "name": "DevOps01"
+  },
+  "keywords": [
+    "mcp",
+    "gitops",
+    "read-only",
+    "skill",
+    "hook",
+    "sample"
+  ],
+  "x-generated-by": "acme-mcp export",
+  "extensions": {
+    "ua.devops01.acme": {
+      "userConfig": {
+        "prod_url": {
+          "type": "string",
+          "title": "GitOps API, prod",
+          "description": "Base URL of the prod GitOps API",
+          "default": "https://gitops.example.com",
+          "required": true
+        },
+        "prod_token": {
+          "type": "string",
+          "title": "GitOps API token, prod",
+          "description": "Read-only API token. The bundled mock never sends it anywhere, any value or an empty one works.",
+          "sensitive": true,
+          "required": false
+        },
+        "test_url": {
+          "type": "string",
+          "title": "GitOps API, test",
+          "description": "Base URL of the test GitOps API",
+          "default": "https://gitops.test.example.com",
+          "required": true
+        },
+        "test_token": {
+          "type": "string",
+          "title": "GitOps API token, test",
+          "description": "Read-only API token. The bundled mock never sends it anywhere, any value or an empty one works.",
+          "sensitive": true,
+          "required": false
+        }
+      },
+      "env": {
+        "prod_url": "ACME_ACME_PLATFORM_PROD_URL",
+        "prod_token": "ACME_ACME_PLATFORM_PROD_TOKEN",
+        "test_url": "ACME_ACME_PLATFORM_TEST_URL",
+        "test_token": "ACME_ACME_PLATFORM_TEST_TOKEN"
+      }
+    }
+  }
+}

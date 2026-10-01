@@ -1,0 +1,20 @@
+{
+  "name": "acme",
+  "interface": {
+    "displayName": "Sample team plugin marketplace for coding agents: one source, native manifests for every tool"
+  },
+  "x-generated-by": "acme-mcp export",
+  "plugins": [
+    {
+      "name": "acme-platform",
+      "source": {
+        "source": "local",
+        "path": "./plugins/devops/acme-platform"
+      },
+      "category": "devops",
+      "policy": {
+        "installation": "AVAILABLE"
+      }
+    }
+  ]
+}

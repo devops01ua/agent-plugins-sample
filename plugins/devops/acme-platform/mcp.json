@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "x-generated-by": "acme-mcp export",
+  "mcpServers": {
+    "gitops-prod": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/server/gitops_mcp.py"
+      ],
+      "env": {
+        "GITOPS_ENV": "prod",
+        "GITOPS_BASE_URL": "${ACME_ACME_PLATFORM_PROD_URL}",
+        "GITOPS_API_TOKEN": "${ACME_ACME_PLATFORM_PROD_TOKEN}",
+        "MCP_READ_ONLY": "true"
+      }
+    },
+    "gitops-test": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/server/gitops_mcp.py"
+      ],
+      "env": {
+        "GITOPS_ENV": "test",
+        "GITOPS_BASE_URL": "${ACME_ACME_PLATFORM_TEST_URL}",
+        "GITOPS_API_TOKEN": "${ACME_ACME_PLATFORM_TEST_TOKEN}",
+        "MCP_READ_ONLY": "true"
+      }
+    }
+  }
+}

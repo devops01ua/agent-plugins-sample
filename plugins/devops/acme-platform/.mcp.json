@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "gitops-prod": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/server/gitops_mcp.py"],
+      "env": {
+        "GITOPS_ENV": "prod",
+        "GITOPS_BASE_URL": "${user_config.prod_url}",
+        "GITOPS_API_TOKEN": "${user_config.prod_token}",
+        "MCP_READ_ONLY": "true"
+      }
+    },
+    "gitops-test": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/server/gitops_mcp.py"],
+      "env": {
+        "GITOPS_ENV": "test",
+        "GITOPS_BASE_URL": "${user_config.test_url}",
+        "GITOPS_API_TOKEN": "${user_config.test_token}",
+        "MCP_READ_ONLY": "true"
+      }
+    }
+  }
+}

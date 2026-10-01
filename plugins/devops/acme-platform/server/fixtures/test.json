@@ -1,0 +1,28 @@
+{
+  "applications": [
+    {
+      "name": "checkout",
+      "desired_revision": "c90d771",
+      "live_revision": "c90d771",
+      "sync": "Synced",
+      "health": "Healthy",
+      "events": [
+        "09:12 rollout started for c90d771",
+        "09:13 2/2 replicas updated",
+        "09:13 rollout complete"
+      ]
+    },
+    {
+      "name": "payments",
+      "desired_revision": "7be0f13",
+      "live_revision": "7be0f13",
+      "sync": "Synced",
+      "health": "Degraded",
+      "events": [
+        "08:55 rollout complete for 7be0f13",
+        "09:30 container restarted: OOMKilled",
+        "09:42 container restarted: OOMKilled"
+      ]
+    }
+  ]
+}

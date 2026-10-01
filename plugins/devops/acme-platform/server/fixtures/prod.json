@@ -1,0 +1,31 @@
+{
+  "applications": [
+    {
+      "name": "checkout",
+      "desired_revision": "a41c9e2",
+      "live_revision": "a41c9e2",
+      "sync": "Synced",
+      "health": "Healthy",
+      "events": [
+        "10:02 rollout started for a41c9e2",
+        "10:03 3/3 replicas updated",
+        "10:04 readiness probes passing",
+        "10:04 rollout complete"
+      ]
+    },
+    {
+      "name": "payments",
+      "desired_revision": "7be0f13",
+      "live_revision": "5d2a8c0",
+      "sync": "OutOfSync",
+      "health": "Progressing",
+      "events": [
+        "11:40 rollout started for 7be0f13",
+        "11:41 1/4 replicas updated",
+        "11:43 readiness probe failed on payments-7be0f13-x2k9: HTTP 503",
+        "11:45 rollout paused: progress deadline close",
+        "11:46 1/4 replicas updated, 3 still on 5d2a8c0"
+      ]
+    }
+  ]
+}

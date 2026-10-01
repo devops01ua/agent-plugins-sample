@@ -1,0 +1,16 @@
+[project]
+name = "acme-plugins-tooling"
+version = "0.1.0"
+description = "Export and install tooling for the sample agent plugin marketplace"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+acme-mcp = "acme_mcp.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["tools"]
